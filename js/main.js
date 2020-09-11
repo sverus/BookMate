@@ -1,5 +1,4 @@
 document.getElementById("submit").addEventListener("click", function() {
-            document.getElementById("demo").innerHTML = "Hello World";
             event.preventDefault();
             console.log("Hello");
             var baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
@@ -8,7 +7,7 @@ document.getElementById("submit").addEventListener("click", function() {
             var url = baseUrl + bookValue + key;
             url = url.replace(/ /g, "+");
             console.log(url);
-            document.getElementById("content").innerHTML = '<p>Search results:</p>';
+            //document.getElementById("content").innerHTML = '<p>Search results:</p>';
 
 
             fetch(url)
@@ -17,7 +16,13 @@ document.getElementById("submit").addEventListener("click", function() {
                         for (var i = 0; i < data.items.length; i++) {
                           var item = data.items[i];
                           // in production code, item.text should have the HTML entities escaped.
-                          document.getElementById("content").innerHTML += "<br> <p>Book Title:" + item.volumeInfo.title +"</p> <p>Book Author:"+ item.volumeInfo.authors+ "</p>";
+                          document.getElementById("content").innerHTML += "<div class="+"book-container>"+"<h3>"+ item.volumeInfo.title+
+                          "</h3> <p>Author: "+ item.volumeInfo.authors+ "</p>"+
+                          //"</p> <p>Book Cover:</p>"
+                           "<p><img src="+ item.volumeInfo.imageLinks.thumbnail + "></p>"+
+                          //"</p> <p>Book Description: "+ item.volumeInfo.description+ "</p>"+
+                          "</p> <p>Category: "+ item.volumeInfo.categories+ "</p>"
+                          +"</div>"
               }
       });
 });

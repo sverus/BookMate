@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+body{
+  font-family: 'Open Sans', sans-serif;
+  background-color: white;
+  font-size: 100%;
+  text-align: center;
+}
+
+h3{
+  font-size: 1.5rem;
+}
+
+#content{
+  display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    column-gap: 10px;
+}
+.book-container{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-style: solid;
+}
