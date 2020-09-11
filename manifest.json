@@ -1,7 +1,7 @@
 {
     "name": "BookMate",
     "short_name": "BookMate",
-    "start_url": "../offline.html",
+    "start_url": "./offline.html",
     "background_color": "white",
     "theme_color": "white",
 
