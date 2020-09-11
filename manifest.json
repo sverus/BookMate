@@ -10,6 +10,7 @@
             "src": "./images/icons/book.png",
             "sizes": "144x144",
             "type": "image/png"
+            "purpose": "any maskable"
         },
         {
             "src": "./images/icons/booklarge.png",
