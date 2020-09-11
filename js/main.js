@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+    navigator.serviceWorkerContainer.register('/sw.js').then(function(registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
@@ -24,7 +24,7 @@ document.getElementById("submit").addEventListener("click", function() {
               .then(response => response.json())
               .then(data => {
                         for (var i = 0; i < data.items.length; i++) {
-                          var item = data.items[i];                        
+                          var item = data.items[i];
                           document.getElementById("content").innerHTML += "<div class="+"book-container>"+"<h3>"+ item.volumeInfo.title+
                           "</h3> <p>Author: "+ item.volumeInfo.authors+ "</p>"+
                            "<p><img src="+ item.volumeInfo.imageLinks.thumbnail + "></p>"+
