@@ -4,7 +4,7 @@
     "start_url": "./offline.html",
     "background_color": "white",
     "theme_color": "white",
-
+    "display": "fullscreen",
     "icons": [
         {
             "src": "images/icons/book.png",
