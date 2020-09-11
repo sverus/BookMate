@@ -1,0 +1,13 @@
+{
+    "name": "BookMate",
+    "short_name": "BookMate",
+    "start_url": "../index.html",
+    "background_color": "#white",
+    "theme_color": "white,"
+
+    "icons": [
+        {
+            "src": "images/icons/book.jpg",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
