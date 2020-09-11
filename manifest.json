@@ -11,6 +11,10 @@
             "sizes": "144x144",
             "type": "image/png"
         }
-
+        {
+            "src": "./images/icons/booklarge.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
       ]
 }
