@@ -8,8 +8,9 @@
     "icons": [
         {
             "src": "./images/icons/book.png",
-            "sizes": "246x144",
+            "sizes": "144x144",
             "type": "image/png"
         }
+
       ]
 }
