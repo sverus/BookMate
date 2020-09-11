@@ -7,7 +7,7 @@
     "display": "fullscreen",
     "icons": [
         {
-            "src": "images/icons/book.png",
+            "src": "./images/icons/book.png",
             "sizes": "128x128",
             "type": "image/png"
         }
