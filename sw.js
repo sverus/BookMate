@@ -1,47 +1,38 @@
-var CACHE_NAME = 'my-site-cache-v1';
-var urlsToCache = [
-  './',
-  './offline.html',
-  './styles/main.css',
-  './js/main.js'
-];
+const OFFLINE_VERSION = 1;
+const CACHE_NAME = 'offline';
+const OFFLINE_URL = 'offline.html';
 
-self.addEventListener('install', function(event) {
-  // Perform install steps
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function(cache) {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
+self.addEventListener('install', (event) => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    await cache.add(new Request(OFFLINE_URL, {cache: 'reload'}));
+  })());
 });
-
-
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-    .then(function(response) {
-      return response || fetchAndCache(event.request);
-    })
-  );
-});
-
-function fetchAndCache(url) {
-  return fetch(url)
-  .then(function(response) {
-    // Check if we received a valid response
-    if (!response.ok) {
-      throw Error(response.statusText);
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async () => {
+    if ('navigationPreload' in self.registration) {
+      await self.registration.navigationPreload.enable();
     }
-    return caches.open(CACHE_NAME)
-    .then(function(cache) {
-      cache.put(url, response.clone());
-      return response;
-    });
-  })
-  .catch(function(error) {
-    console.log('Request failed:', error);
-    // You could return a custom offline 404 page here
-  });
-}
+  })());
+  self.clients.claim();
+});
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        const preloadResponse = await event.preloadResponse;
+        if (preloadResponse) {
+          return preloadResponse;
+        }
+
+        const networkResponse = await fetch(event.request);
+        return networkResponse;
+      } catch (error) {
+        console.log('Fetch failed; returning offline page instead.', error);
+        const cache = await caches.open(CACHE_NAME);
+        const cachedResponse = await cache.match(OFFLINE_URL);
+        return cachedResponse;
+      }
+    })());
+  }
+});
