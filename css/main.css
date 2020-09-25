@@ -11,9 +11,14 @@ h3{
 }
 label{
   font-size: 1.5rem;
-  display: block;
-}
 
+  display: block;
+
+
+}
+.author{
+
+}
 #content{
   display: grid;
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -21,14 +26,22 @@ label{
 
 }
 #forms-container{
+  color:white;
   margin-top: 10px;
   margin-bottom: 10px;
   border-style: solid;
   padding-bottom: 10px;
+  background-color: white;
+  background-image: url("../images/books.jpg");
 
 }
 .book-container{
   margin-top: 10px;
   margin-bottom: 10px;
-  border-style: solid;
+
+  background-color: grey;
+  border-radius: 25px;
+}
+.heading{
+  background-color: white;
 }
