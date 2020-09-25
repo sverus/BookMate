@@ -4,6 +4,7 @@ body{
   background-color: white;
   font-size: 100%;
   text-align: center;
+  background-image: url("../images/books.jpg")
 }
 
 h3{
@@ -26,13 +27,13 @@ label{
 
 }
 #forms-container{
-  color:white;
+
   margin-top: 10px;
   margin-bottom: 10px;
   border-style: solid;
   padding-bottom: 10px;
   background-color: white;
-  background-image: url("../images/books.jpg");
+  ;
 
 }
 .book-container{
@@ -42,6 +43,7 @@ label{
   background-color: grey;
   border-radius: 25px;
 }
-.heading{
-  background-color: white;
+h1{
+  color:white;
+
 }
