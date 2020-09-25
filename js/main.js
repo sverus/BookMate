@@ -44,11 +44,10 @@ document.getElementById("submit").addEventListener("click", function() {
 document.getElementById("submitGenre").addEventListener("click", function() {
             event.preventDefault();
             console.log("Hello");
+            var genreValue = document.getElementById('genreInput').value;
 
 
-            var genreType=document.querySelector('input[name="genre"]:checked').value;
-            console.log(genreType);
-            var url=baseUrl+"subject:"+genreType;
+            var url=baseUrl+"subject:"+genreValue;
             console.log(url)
 
 
@@ -64,7 +63,7 @@ document.getElementById("submitGenre").addEventListener("click", function() {
                           "</p> <p>Category: "+ item.volumeInfo.categories+ "</p>"
                           +"</div>"
               }
-      });  
+      });
 
     }
 

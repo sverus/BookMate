@@ -13,32 +13,21 @@
 </head>
 
 <body>
+  <h1>BookMate</h1>
+  <div id="forms-container"></div>
   <form>
-    <h1>BookMate</h1>
     <label for="bookInput">Enter a book or author:</label>
     <input type="text" id="bookInput">
     <input type="submit" id="submit" value="Submit">
   </form>
 <!-- Genre select -->
-<p>or select a genre:</p>
+<h3>Or</h3>
 <form>
-<div>
-  <input type="radio" id="fiction" name="genre" value="fiction"
-         checked>
-  <label for="fiction">Fiction</label>
-</div>
-
-<div>
-  <input type="radio" id="history" name="genre" value="history">
-  <label for="history">History</label>
-</div>
-
-<div>
-  <input type="radio" id="computers" name="genre" value="computers">
-  <label for="computers">Computers</label>
-</div>
-<input type="submit" id="submitGenre" value="Submit">
+  <label for="bookInput">Enter a genre: </label>
+  <input type="text" id="genreInput">
+  <input type="submit" id="submitGenre" value="Submit">
 </form>
+</div>
 <div id="content"></div>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
