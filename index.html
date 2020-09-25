@@ -19,8 +19,26 @@
     <input type="text" id="bookInput">
     <input type="submit" id="submit" value="Submit">
   </form>
+<!-- Genre select -->
+<p>or select a genre:</p>
+<form>
+<div>
+  <input type="radio" id="fiction" name="genre" value="fiction"
+         checked>
+  <label for="fiction">Fiction</label>
+</div>
 
+<div>
+  <input type="radio" id="history" name="genre" value="history">
+  <label for="history">History</label>
+</div>
 
+<div>
+  <input type="radio" id="computers" name="genre" value="computers">
+  <label for="computers">Computers</label>
+</div>
+<input type="submit" id="submitGenre" value="Submit">
+</form>
 <div id="content"></div>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
