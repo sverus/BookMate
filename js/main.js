@@ -73,8 +73,9 @@ document.getElementById("submitGenre").addEventListener("click", function() {
                           document.getElementById("content").innerHTML += "<div class="+"book-container>"+"<h3>"+ item.volumeInfo.title+
                           "</h3> <p>Author: "+ item.volumeInfo.authors+ "</p>"+
                            "<p><img src="+ item.volumeInfo.imageLinks.thumbnail + "></p>"+
-                          "</p> <p>Category: "+ item.volumeInfo.categories+ "</p>"
-                          +"</div>"
+                          "</p> <p>Category: "+ item.volumeInfo.categories+ "</p>"+
+                          "<a href="+ item.volumeInfo.previewLink+ ">View the book</a>"+
+                          "</div>"
               }
       });
 
