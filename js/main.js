@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-var favList = []
+var favList = {}
 var baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
 var key = "&key=AIzaSyD4GijWnTEom_CThw6R6deoZiI7h6n3UWM";
 var items = [];
@@ -54,38 +54,7 @@ document.getElementById("submit").addEventListener("click", function() {
         });
 });
 
-function addToFavList() {
-    event.preventDefault();
-    var item = items.find(x => x.id === event.target.dataset.itemId); //mapping event to correct favourites button
-    if (localStorage.getItem("favourites") === null) {
-      //if no favourites are currently stored in localstorage
-        favList.push(item.volumeInfo.title);
-        console.log('Favourites in array are:', favList);
-        localStorage.setItem("favourites", JSON.stringify(favList)); //adding Favourites
-        var localFavs = localStorage.getItem("favourites");
-        console.log("This should be what is actually in localstorage", localFavs);
-        //if favourites already exist in locastorage
-    } else {
-      //get old list, clear from localstorage, merge it with new list & readd to localstorage
-        var oldFavs = localStorage.getItem("favourites");
-        oldFavs = oldFavs ? oldFavs.split(',') : [];
-        for(var i = 0; i < oldFavs.length; i++)
-{
-  //having issues with characters being reproduced on each list update. this removes those characters.
-    oldFavs[i] = oldFavs[i].replace('[' , '');
-    oldFavs[i] = oldFavs[i].replace(']' , '');
-    oldFavs[i] = oldFavs[i].replace('"' , '');
-    oldFavs[i] = oldFavs[i].replace('"' , '');
-    oldFavs[i] = oldFavs[i].replace('\\' , '');
-}
-        console.log("old favourites", oldFavs);
-        localStorage.clear();
-        oldFavs.push(item.volumeInfo.title);
-        console.log('Favourites in array are:', oldFavs);
-        localStorage.setItem("favourites", JSON.stringify(oldFavs));
-        var localFavs = localStorage.getItem("favourites");
-    }
-}
+
 //Genre search
 document.getElementById("submitGenre").addEventListener("click", function() {
     event.preventDefault();
@@ -117,3 +86,34 @@ document.getElementById("submitGenre").addEventListener("click", function() {
             }
         });
 });
+var oldFavs = {};
+var finalFavs=[];
+var localFavs = [];
+
+function addToFavList() {
+    event.preventDefault();
+    var item = items.find(x => x.id === event.target.dataset.itemId); //mapping event to correct favourites button
+    if (localStorage.getItem("favourites") === null) {
+      //if no favourites are currently stored in localstorage
+        localStorage.setItem("favourites", JSON.stringify(item)); //adding Favourites
+        var localFavs = localStorage.getItem("favourites");
+        finalFavs.push(item);
+
+        var localFavsJson=JSON.stringify(localFavs);
+
+        //if favourites already exist in locastorage
+    } else {
+      // get what is currently in localStorage
+      // save it to an array
+      // get new item to be added to favourites
+      // add it to same array
+      // convert array to JSON
+      // send object to localstorage
+        var oldFavs = localStorage.getItem("favourites");
+        console.log(oldFavs)
+        finalFavs.push(item);
+        console.log("this is the item to be added", item);
+        console.log("final list of what should be in local", finalFavs);
+        localStorage.setItem("favourites", JSON.stringify(finalFavs));
+    }
+}
