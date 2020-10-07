@@ -9,20 +9,45 @@
     <meta name="theme-color" content="#317EFB"/>
     <meta name="Description" content="A PWA to search books.">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mburger.css">
+    <link rel="stylesheet" href="css/mmenu-light.css">
 
 
     <link rel="apple-touch-icon" href="/images/icons/book.png">
 </head>
 
 <body>
+  <div id="my-header">
+    <div id="burgermenu">
+    <a class="mburger mburger--collapse" href="#my-menu">
+<b></b>
+<b></b>
+<b></b>
+<span>Menu</span>
+</a>
+</div>
+                <nav id="my-menu">
+                    <ul>
+                        <li class="Selected"><a href="/index.html">Home</a></li>
+                        <li><a href="/favourites.html">Favourites List</a></li>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 
+            <div class="mainHeading">
+              <h1>BookMate</h1>
 
-  <h1>BookMate</h1>
   <h2>Your favourites:</h2>
+  <h3>If you have recently cleared your browser history, this list is empty.</h3>
+  </div>
 
 <div id="favContent">
 
 </div>
 <script type="text/javascript" src="js/favouritesdisplay.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/mburger.js"></script>
+<script type="text/javascript" src="js/mmenu-light.js"></script>
 </body>
 </html>

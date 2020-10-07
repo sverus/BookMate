@@ -1,5 +1,8 @@
 window.onload=displayFavourites;
 
+
+
+
 function displayFavourites() {
     event.preventDefault();
 

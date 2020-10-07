@@ -46,5 +46,26 @@ label{
 }
 h1,h2{
   color:white;
+  background-color:#0A38F5;
+  border-radius: 25px;
 
+}
+
+
+.mainHeading{
+  background-color:#0A38F5;
+  border-radius: 25px;
+}
+#burgermenu{
+  color:white;
+  background-color:#0A38F5;
+  border-radius: 25px;
+}
+
+.mburger {
+    width: 80px;
+    height: 80px;
+    --mb-bar-height: 2px;
+    background-color:white;
+    color: white;
 }
