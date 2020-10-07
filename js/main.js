@@ -98,8 +98,10 @@ function addToFavList() {
         localStorage.setItem("favourites", JSON.stringify(item)); //adding Favourites
         var localFavs = localStorage.getItem("favourites");
         finalFavs.push(item);
+        localStorage.clear();
+        localStorage.setItem("favourites", JSON.stringify(finalFavs));
 
-        var localFavsJson=JSON.stringify(localFavs);
+
 
         //if favourites already exist in locastorage
     } else {
@@ -110,6 +112,7 @@ function addToFavList() {
       // convert array to JSON
       // send object to localstorage
         var oldFavs = localStorage.getItem("favourites");
+        localStorage.clear();
         console.log(oldFavs)
         finalFavs.push(item);
         console.log("this is the item to be added", item);
