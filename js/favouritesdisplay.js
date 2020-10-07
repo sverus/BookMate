@@ -1,17 +1,13 @@
 window.onload=displayFavourites;
 
-
-
-
 function displayFavourites() {
     event.preventDefault();
 
+//get items, parse to JS, display
     var localFavs = [];
     var localFavs = localStorage.getItem("favourites");
     var favouritesToShow = JSON.parse(localStorage.getItem('favourites'));
     console.log("favourites", favouritesToShow);
-
-
     for (var i = 0; i < favouritesToShow.length; i++){
 
 console.log(favouritesToShow[i].volumeInfo.title);
@@ -20,8 +16,28 @@ console.log(favouritesToShow[i].volumeInfo.title);
       `<p><img src= ${favouritesToShow[i].volumeInfo.imageLinks.thumbnail}></p>` +
       `</p> <p>Category:   ${favouritesToShow[i].volumeInfo.categories}</p>` +
       `<a href=" ${favouritesToShow[i].volumeInfo.previewLink} ">View the book</a>` +
-      `<input type="submit" class="addToFavs" data-item-id="${favouritesToShow[i].id}"  value="Remove from favourites">`
-
-
+      `<input type="submit" class="deleteFav" data-item-id="${favouritesToShow[i].id}"  value="Remove from favourites">`
     }
+    //addin event listener to each search result for delete favourite functionality
+    var favButton = document.getElementsByClassName("deleteFav");
+    for (i = 0; i < favButton.length; i++) {
+        favButton[i].addEventListener("click", deleteFav);
+    }
+}
+function deleteFav() {
+    event.preventDefault();
+    var favouritesToShow = JSON.parse(localStorage.getItem('favourites'));
+    console.log("Current favourites: ", favouritesToShow);
+
+    var item = favouritesToShow.find(x => x.id === event.target.dataset.itemId); //mapping favourite to delete
+    let index = favouritesToShow.findIndex(id => id == item);
+    console.log("Index", index);
+    console.log("Item to delete is:",item);
+    favouritesToShow.splice(index, 1); //remove 1 index at index of selected favourite
+    console.log("New favourites list:", favouritesToShow);
+    //clear & refresh new favourite list
+    localStorage.clear();
+    localStorage.setItem("favourites", JSON.stringify(favouritesToShow));
+    //refresh window
+    location.reload()
 }
