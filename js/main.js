@@ -41,9 +41,10 @@ document.getElementById("submit").addEventListener("click", function() {
             //loop through search results and display them
             items = data.items;
             console.log(data.items.length);
-            if (data.items.length=0)
+            if (data.items.length==0)
             {
-            document.getElementById("content").innerHTML += `<div class=" book-container"><p>Your search returned no results. Please broaden your search query.<p></div>`
+              console.log(data.items.length);
+              document.getElementById("content").innerHTML += `<div class=" book-container"><p>Your search returned no results. Please broaden your search query.<p></div>`
             }
             for (var i = 0; i < data.items.length; i++) {
                 var item = data.items[i];
