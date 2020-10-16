@@ -45,7 +45,6 @@ document.getElementById("submit").addEventListener("click", function() {
             {
             document.getElementById("content").innerHTML += `<div class=" book-container"><p>Your search returned no results. Please broaden your search query.<p></div>`
             }
-            else{
             for (var i = 0; i < data.items.length; i++) {
                 var item = data.items[i];
                 document.getElementById("content").innerHTML += `<div class=" book-container"><div class= "heading"><h3>${item.volumeInfo.title}</h3></div>` +
@@ -61,7 +60,6 @@ document.getElementById("submit").addEventListener("click", function() {
             for (i = 0; i < favButton.length; i++) {
                 favButton[i].addEventListener("click", addToFavList);
             }
-          }
         });
 });
 
