@@ -8,6 +8,16 @@ function displayFavourites() {
     var localFavs = localStorage.getItem("favourites");
     var favouritesToShow = JSON.parse(localStorage.getItem('favourites'));
     console.log("favourites", favouritesToShow);
+
+    if (favouritesToShow==null)
+    //error handling if no favourites
+    {
+      document.getElementById("favContent").innerHTML += `<div class=" book-container"><p>You currently have no favourites in your list.
+      This could be because you haven't added any, or have recently cleared your browser data.<p></div>`
+    }
+    //if there are favourites:
+
+
     for (var i = 0; i < favouritesToShow.length; i++){
 
 console.log(favouritesToShow[i].volumeInfo.title);
