@@ -134,10 +134,12 @@ function addToFavList() {
 
         localStorage.clear();
         console.log(oldFavs)
+        //check if item is already in favs before adding it
+        if (!oldFavsArray.find(({id}) => id === item.id)) {
+          oldFavsArray.push(item);
+        }
 
-
-
-        oldFavsArray.push(item);
+      //  oldFavsArray.push(item);
         console.log("this is the item to be added", item);
         console.log("final list of what should be in local", oldFavsArray);
         localStorage.setItem("favourites", JSON.stringify(oldFavsArray));
