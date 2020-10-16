@@ -85,7 +85,7 @@ document.getElementById("submitGenre").addEventListener("click", function() {
               document.getElementById("content").innerHTML += `<div class=" book-container"><p>Your search returned no results. Please broaden your search query.<p></div>`
             }
             //if there are results:
-            
+
             for (var i = 0; i < data.items.length; i++) {
                 var item = data.items[i];
                 document.getElementById("content").innerHTML += `<div class=" book-container"><div class= "heading"><h3>${item.volumeInfo.title}</h3></div>` +
@@ -104,6 +104,7 @@ document.getElementById("submitGenre").addEventListener("click", function() {
         });
 });
 var oldFavs = {};
+var oldFavsArray = [];
 var finalFavs=[];
 var localFavs = [];
 
@@ -129,11 +130,16 @@ function addToFavList() {
       // convert array to JSON
       // send object to localstorage
         var oldFavs = localStorage.getItem("favourites");
+        var oldFavsArray=JSON.parse(oldFavs);
+
         localStorage.clear();
         console.log(oldFavs)
-        finalFavs.push(item);
+
+
+
+        oldFavsArray.push(item);
         console.log("this is the item to be added", item);
-        console.log("final list of what should be in local", finalFavs);
-        localStorage.setItem("favourites", JSON.stringify(finalFavs));
+        console.log("final list of what should be in local", oldFavsArray);
+        localStorage.setItem("favourites", JSON.stringify(oldFavsArray));
     }
 }
